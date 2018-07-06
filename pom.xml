@@ -1,0 +1,119 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.jwebmp</groupId>
+        <artifactId>jwebmp-bom</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>guiced-persistence-btm</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Guiced Persistence - BTM</name>
+    <description>A complete JPA 2.1 implementation for Standalone or EE Implementation. Enables Multiple Persistence units
+        with full JTA Support using BTM. Perfect for Guice implementations, test suites, and Guice enabled Web Applications or EAR Projects.
+        Requires JDK 8
+    </description>
+    <url>https://github.com/GedMarc/GuicedPersistence-BTM</url>
+
+    <repositories>
+        <repository>
+            <id>jwebmp-snapshot</id>
+            <name>JWebMPArtifactory-snapshots</name>
+            <url>https://jwebmp.com/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>guiced-persistence</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.btm</groupId>
+            <artifactId>btm</artifactId>
+            <version>${btm.version}</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <url>https://github.com/GedMarc/GuicedPersistence.git</url>
+    </scm>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/GedMarc/GuicedPersistence-BTM/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>TeamCity</system>
+        <url>http://jwebmp.com/teamcity</url>
+    </ciManagement>
+
+    <profiles>
+        <profile>
+            <id>jdk8</id>
+            <dependencies>
+
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>jdk10</id>
+            <dependencies>
+
+            </dependencies>
+        </profile>
+
+    </profiles>
+</project>
