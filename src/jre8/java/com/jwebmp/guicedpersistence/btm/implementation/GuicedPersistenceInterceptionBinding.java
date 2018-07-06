@@ -1,4 +1,4 @@
-package com.jwebmp.guicedpersistence.btm;
+package com.jwebmp.guicedpersistence.btm.implementation;
 
 import com.google.inject.matcher.Matchers;
 import com.google.inject.persist.Transactional;

@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.btm;
+package com.jwebmp.guicedpersistence.btm.implementation;
 
 import bitronix.tm.jndi.BitronixContext;
-import com.google.inject.persist.Transactional;
+import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @SuppressWarnings("all")
-class TransactionHandler
+public class InternalTransactionHandler
 		implements MethodInterceptor
 {
 	private static final Logger log = Logger.getLogger("TransactionHandler");
@@ -20,6 +20,8 @@ class TransactionHandler
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable
 	{
+		Transactional t = invocation.getMethod()
+		                            .getAnnotation(Transactional.class);
 		UserTransaction ut = null;
 		try
 		{
@@ -47,8 +49,6 @@ class TransactionHandler
 		}
 		catch (Throwable T)
 		{
-			Transactional t = invocation.getMethod()
-			                            .getAnnotation(Transactional.class);
 			for (Class<? extends Exception> aClass : t.rollbackOn())
 			{
 				if (aClass.isAssignableFrom(T.getClass()))
@@ -68,7 +68,7 @@ class TransactionHandler
 	 *
 	 * @return A UserTransaction of type BitronixTransactionManager as JDK9 no longer has UserTransaction
 	 *
-	 * @throws NamingException
+	 * @throws javax.naming.NamingException
 	 * 		If java:comp/UserTransaction has not been bound
 	 */
 	@NotNull
