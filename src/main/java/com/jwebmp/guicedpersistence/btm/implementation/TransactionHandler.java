@@ -68,7 +68,7 @@ public class TransactionHandler
 	 *
 	 * @return A UserTransaction of type BitronixTransactionManager as JDK9 no longer has UserTransaction
 	 *
-	 * @throws NamingException
+	 * @throws javax.naming.NamingException
 	 * 		If java:comp/UserTransaction has not been bound
 	 */
 	@NotNull

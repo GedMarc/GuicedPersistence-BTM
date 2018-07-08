@@ -67,6 +67,20 @@
             <artifactId>hibernate-agroal</artifactId>
             <type>jar</type>
         </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.btm</groupId>
+            <artifactId>btm</artifactId>
+            <version>${btm.version}</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
     </dependencies>
 
     <scm>

@@ -3,6 +3,7 @@ package com.jwebmp.guicedpersistence.btm;
 import bitronix.tm.resource.jdbc.PoolingDataSource;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 
 /**
@@ -37,7 +38,7 @@ public class BTMConnectionBaseInfo
 	 * @return
 	 */
 	@Override
-	public PoolingDataSource toPooledDatasource()
+	public DataSource toPooledDatasource()
 	{
 		PoolingDataSource pds = new PoolingDataSource();
 		if (!isXa())
