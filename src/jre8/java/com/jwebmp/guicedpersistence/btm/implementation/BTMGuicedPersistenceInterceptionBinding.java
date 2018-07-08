@@ -6,7 +6,7 @@ import com.jwebmp.guicedinjection.abstractions.GuiceInjectorModule;
 import com.jwebmp.guicedinjection.interfaces.GuiceDefaultBinder;
 
 @SuppressWarnings("unused")
-public class GuicedPersistenceInterceptionBinding
+public class BTMGuicedPersistenceInterceptionBinding
 		extends GuiceDefaultBinder
 {
 
@@ -14,6 +14,7 @@ public class GuicedPersistenceInterceptionBinding
 	public void onBind(GuiceInjectorModule module)
 	{
 		module.bindInterceptor(Matchers.any(), Matchers.annotatedWith(Transactional.class), new TransactionHandler());
+
 		module.bindInterceptor(Matchers.any(), Matchers.annotatedWith(com.jwebmp.guicedpersistence.db.annotations.Transactional.class), new InternalTransactionHandler());
 	}
 }

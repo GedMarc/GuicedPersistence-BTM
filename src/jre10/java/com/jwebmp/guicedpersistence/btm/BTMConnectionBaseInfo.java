@@ -1,8 +1,8 @@
 package com.jwebmp.guicedpersistence.btm;
 
-import bitronix.tm.resource.jdbc.PoolingDataSource;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 
 /**
@@ -37,7 +37,7 @@ public class BTMConnectionBaseInfo
 	 * @return
 	 */
 	@Override
-	public PoolingDataSource toPooledDatasource()
+	public DataSource toPooledDatasource()
 	{
 		throw new java.lang.UnsupportedOperationException("Haven't quite figured out JTA for JDK 10 just yet, without a compiler argument for patch-module");
 	}

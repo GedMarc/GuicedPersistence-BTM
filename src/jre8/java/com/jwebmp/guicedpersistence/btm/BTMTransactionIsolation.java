@@ -11,5 +11,4 @@ enum BTMTransactionIsolation
 	READ_UNCOMMITTED,
 	REPEATABLE_READ,
 	SERIALIZABLE
-
 }
