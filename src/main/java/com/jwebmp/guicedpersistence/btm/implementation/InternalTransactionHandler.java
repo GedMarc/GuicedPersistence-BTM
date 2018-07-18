@@ -1,12 +1,12 @@
 package com.jwebmp.guicedpersistence.btm.implementation;
 
+import bitronix.tm.BitronixTransactionManager;
 import bitronix.tm.jndi.BitronixContext;
 import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 import javax.naming.NamingException;
-import javax.transaction.UserTransaction;
 import javax.validation.constraints.NotNull;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +22,7 @@ public class InternalTransactionHandler
 	{
 		Transactional t = invocation.getMethod()
 		                            .getAnnotation(Transactional.class);
-		UserTransaction ut = null;
+		BitronixTransactionManager ut = null;
 		try
 		{
 			ut = getUserTransaction();
@@ -72,9 +72,9 @@ public class InternalTransactionHandler
 	 * 		If java:comp/UserTransaction has not been bound
 	 */
 	@NotNull
-	public static UserTransaction getUserTransaction() throws NamingException
+	public static BitronixTransactionManager getUserTransaction() throws NamingException
 	{
 		BitronixContext ic = new BitronixContext();
-		return (UserTransaction) ic.lookup("java:comp/UserTransaction");
+		return (BitronixTransactionManager) ic.lookup("java:comp/UserTransaction");
 	}
 }
