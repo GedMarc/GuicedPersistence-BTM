@@ -3,11 +3,11 @@ package com.jwebmp.guicedpersistence.btm.implementation;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.persist.Transactional;
 import com.jwebmp.guicedinjection.abstractions.GuiceInjectorModule;
-import com.jwebmp.guicedinjection.interfaces.GuiceDefaultBinder;
+import com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder;
 
 @SuppressWarnings("unused")
 public class BTMGuicedPersistenceInterceptionBinding
-		extends GuiceDefaultBinder
+		implements IGuiceDefaultBinder<GuiceInjectorModule>
 {
 
 	@Override
