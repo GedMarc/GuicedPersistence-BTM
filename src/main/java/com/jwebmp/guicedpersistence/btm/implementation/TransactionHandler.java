@@ -32,14 +32,23 @@ public class TransactionHandler
 		}
 
 		Object returnable = null;
+		boolean transactionWasStartedOutside = false;
 		if (ut.getStatus() != 6)
 		{
 			ut.begin();
 		}
+		else
+		{
+			transactionWasStartedOutside = true;
+		}
+
 		try
 		{
 			returnable = invocation.proceed();
-			ut.commit();
+			if (!transactionWasStartedOutside)
+			{
+				ut.commit();
+			}
 		}
 		catch (IllegalStateException ise)
 		{
