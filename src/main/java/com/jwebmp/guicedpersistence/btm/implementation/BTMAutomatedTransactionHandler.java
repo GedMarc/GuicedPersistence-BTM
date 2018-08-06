@@ -1,14 +1,14 @@
 package com.jwebmp.guicedpersistence.btm.implementation;
 
+import bitronix.tm.BitronixTransactionManager;
 import bitronix.tm.jndi.BitronixContext;
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
 import com.jwebmp.logger.LogFactory;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Status;
-import javax.transaction.UserTransaction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 public class BTMAutomatedTransactionHandler
 		implements ITransactionHandler
@@ -23,16 +23,16 @@ public class BTMAutomatedTransactionHandler
 	public void beginTransacation(boolean createNew, EntityManager entityManager)
 	{
 		BitronixContext bc = new BitronixContext();
-		UserTransaction userTransaction;
+		BitronixTransactionManager userTransaction;
 		try
 		{
 			transactionExistedDuringBegin = transactionExists(entityManager);
-			userTransaction = (UserTransaction) bc.lookup("java:comp/UserTransaction");
-			if (createNew || !transactionExists(entityManager) || userTransaction.getStatus() != Status.STATUS_ACTIVE)
+			userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			if (createNew || !transactionExists(entityManager) || userTransaction.getStatus() != 0)
 			{
 				try
 				{
-					userTransaction = (UserTransaction) bc.lookup("java:comp/UserTransaction");
+					userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
 					userTransaction.begin();
 				}
 				catch (Exception e)
@@ -55,8 +55,8 @@ public class BTMAutomatedTransactionHandler
 		{
 			try
 			{
-				UserTransaction userTransaction = (UserTransaction) bc.lookup("java:comp/UserTransaction");
-				if (userTransaction.getStatus() == Status.STATUS_ACTIVE && !transactionExistedDuringBegin)
+				BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+				if (userTransaction.getStatus() == 0 && !transactionExistedDuringBegin)
 				{
 					userTransaction.commit();
 				}
@@ -71,12 +71,11 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public boolean transactionExists(EntityManager entityManager)
 	{
-
-		UserTransaction userTransaction = null;
+		BitronixTransactionManager userTransaction = null;
 		try
 		{
-			userTransaction = (UserTransaction) bc.lookup("java:comp/UserTransaction");
-			return userTransaction.getStatus() == Status.STATUS_ACTIVE;
+			userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			return userTransaction.getStatus() == 0;
 		}
 		catch (Exception e)
 		{
