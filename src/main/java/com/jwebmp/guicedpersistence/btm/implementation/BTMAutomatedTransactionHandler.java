@@ -51,7 +51,7 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public void commitTransacation(boolean createNew, EntityManager entityManager)
 	{
-		if (createNew || !transactionExists(entityManager))
+		if (createNew || transactionExists(entityManager))
 		{
 			try
 			{
