@@ -32,13 +32,12 @@
 
         <dependency>
             <groupId>com.jwebmp</groupId>
-            <artifactId>guiced-log-master</artifactId>
+            <artifactId>jwebmp-log-master</artifactId>
             <version>${project.version}</version>
             <classifier>${jwebmp.runtime.classifier}</classifier>
             <optional>true</optional>
             <type>jar</type>
         </dependency>
-
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -48,7 +47,6 @@
             <optional>true</optional>
             <type>jar</type>
         </dependency>
-
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -98,7 +96,6 @@
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
-            <version>${javax.transaction.transactionapi}</version>
         </dependency>
 
     </dependencies>
@@ -176,6 +173,12 @@
                     </plugin>
                 </plugins>
             </build>
+            <dependencies>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 </project>
