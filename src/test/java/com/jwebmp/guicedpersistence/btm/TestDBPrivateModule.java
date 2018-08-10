@@ -1,7 +1,7 @@
 package com.jwebmp.guicedpersistence.btm;
 
+import com.jwebmp.guicedpersistence.db.AbstractDatabaseProviderModule;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
-import com.jwebmp.guicedpersistence.db.connectionbasebuilders.AbstractDatabaseProviderModule;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import javax.validation.constraints.NotNull;
