@@ -15,8 +15,14 @@ public class BTMConnectionBaseInfo
 		extends ConnectionBaseInfo
 		implements Serializable, Cloneable
 {
+	/**
+	 * Field serialVersionUID
+	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor BTMConnectionBaseInfo creates a new BTMConnectionBaseInfo instance with XA enabled
+	 */
 	public BTMConnectionBaseInfo()
 	{
 		setServerInstanceNameProperty("Instance");
@@ -26,6 +32,7 @@ public class BTMConnectionBaseInfo
 	 * Configures this handler as either an XA or Non-XA Resource
 	 *
 	 * @param xa
+	 * 		If the connection is XA
 	 */
 	public BTMConnectionBaseInfo(boolean xa)
 	{
@@ -35,7 +42,7 @@ public class BTMConnectionBaseInfo
 	/**
 	 * Returns the BTM Pooling Data Source Configured
 	 *
-	 * @return
+	 * @return The datasource
 	 */
 	@Override
 	public DataSource toPooledDatasource()
@@ -124,17 +131,28 @@ public class BTMConnectionBaseInfo
 
 		if (isXa())
 		{
-			pds = processXa(this, pds);
+			processXa(this, pds);
 		}
 		else
 		{
-			pds = processNonXa(this, pds);
+			processNonXa(this, pds);
 		}
 		pds.init();
 
 		return pds;
 	}
 
+	/**
+	 * Method processXa ...
+	 *
+	 * @param cbi
+	 * 		of type ConnectionBaseInfo
+	 * @param pds
+	 * 		of type PoolingDataSource
+	 *
+	 * @return PoolingDataSource
+	 */
+	@SuppressWarnings("UnusedReturnValue")
 	private PoolingDataSource processXa(ConnectionBaseInfo cbi, PoolingDataSource pds)
 	{
 		if (cbi.getDatabaseName() != null)
@@ -170,6 +188,17 @@ public class BTMConnectionBaseInfo
 		return pds;
 	}
 
+	/**
+	 * Method processNonXa ...
+	 *
+	 * @param cbi
+	 * 		of type ConnectionBaseInfo
+	 * @param pds
+	 * 		of type PoolingDataSource
+	 *
+	 * @return PoolingDataSource
+	 */
+	@SuppressWarnings("UnusedReturnValue")
 	private PoolingDataSource processNonXa(ConnectionBaseInfo cbi, PoolingDataSource pds)
 	{
 		if (cbi.getTransactionIsolation() != null)
@@ -199,5 +228,19 @@ public class BTMConnectionBaseInfo
 		}
 
 		return pds;
+	}
+
+	/**
+	 * Method clone ...
+	 *
+	 * @return Object
+	 *
+	 * @throws CloneNotSupportedException
+	 * 		when
+	 */
+	@Override
+	protected BTMConnectionBaseInfo clone() throws CloneNotSupportedException
+	{
+		return (BTMConnectionBaseInfo) super.clone();
 	}
 }

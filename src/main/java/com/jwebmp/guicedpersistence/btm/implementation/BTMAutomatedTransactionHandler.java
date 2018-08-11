@@ -9,16 +9,44 @@ import javax.persistence.EntityManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class BTMAutomatedTransactionHandler
 		implements ITransactionHandler
 {
+	/**
+	 * Field log
+	 */
 	private static final Logger log = LogFactory.getLog("BTMAutomatedTransactionHandler");
-	private static boolean Active = false;
-	private BitronixContext bc = new BitronixContext();
-	;
+	/**
+	 * Field bitronixContext
+	 */
+	private static final BitronixContext bitronixContext = new BitronixContext();
+	/**
+	 * Field active
+	 */
+	private static boolean active = false;
+	/**
+	 * Field transactionExistedDuringBegin
+	 */
 	private boolean transactionExistedDuringBegin = false;
 
+	public static boolean isActive()
+	{
+		return BTMAutomatedTransactionHandler.active;
+	}
+
+	public static void setActive(boolean active)
+	{
+		BTMAutomatedTransactionHandler.active = active;
+	}
+
+	/**
+	 * What to do when beginning a transaction, always called
+	 *
+	 * @param createNew
+	 * 		If create new was specified
+	 * @param entityManager
+	 * 		The entity manager associated
+	 */
 	@Override
 	public void beginTransacation(boolean createNew, EntityManager entityManager)
 	{
@@ -37,17 +65,24 @@ public class BTMAutomatedTransactionHandler
 				}
 				catch (Exception e)
 				{
-					log.log(Level.WARNING, "Unable to automatically start the transaction", e);
+					BTMAutomatedTransactionHandler.log.log(Level.WARNING, "Unable to automatically start the transaction", e);
 				}
 			}
 		}
 		catch (Exception e)
 		{
-			log.log(Level.WARNING, "Unable to automatically start the transaction", e);
-			return;
+			BTMAutomatedTransactionHandler.log.log(Level.WARNING, "Unable to automatically start the transaction", e);
 		}
 	}
 
+	/**
+	 * What to do when committing a transaction, always called
+	 *
+	 * @param createNew
+	 * 		If the transaction already exists
+	 * @param entityManager
+	 * 		The entity manager associated
+	 */
 	@Override
 	public void commitTransacation(boolean createNew, EntityManager entityManager)
 	{
@@ -55,7 +90,7 @@ public class BTMAutomatedTransactionHandler
 		{
 			try
 			{
-				BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+				BitronixTransactionManager userTransaction = (BitronixTransactionManager) BTMAutomatedTransactionHandler.bitronixContext.lookup("java:comp/UserTransaction");
 				if (userTransaction.getStatus() == 0 && !transactionExistedDuringBegin)
 				{
 					userTransaction.commit();
@@ -63,7 +98,7 @@ public class BTMAutomatedTransactionHandler
 			}
 			catch (Exception e)
 			{
-				log.log(Level.WARNING, "Unable to automatically start the transaction", e);
+				BTMAutomatedTransactionHandler.log.log(Level.WARNING, "Unable to automatically start the transaction", e);
 			}
 		}
 	}
@@ -74,12 +109,12 @@ public class BTMAutomatedTransactionHandler
 		BitronixTransactionManager userTransaction = null;
 		try
 		{
-			userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			userTransaction = (BitronixTransactionManager) BTMAutomatedTransactionHandler.bitronixContext.lookup("java:comp/UserTransaction");
 			return userTransaction.getStatus() == 0;
 		}
 		catch (Exception e)
 		{
-			log.log(Level.SEVERE, "BTM Cannot be fetched!");
+			BTMAutomatedTransactionHandler.log.log(Level.SEVERE, "BTM Cannot be fetched!");
 			return false;
 		}
 
@@ -88,16 +123,6 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public boolean active()
 	{
-		return Active;
-	}
-
-	public static boolean isActive()
-	{
-		return Active;
-	}
-
-	public static void setActive(boolean active)
-	{
-		Active = active;
+		return BTMAutomatedTransactionHandler.active;
 	}
 }
