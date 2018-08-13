@@ -5,7 +5,7 @@ package com.jwebmp.guicedpersistence.btm;
  * <p>
  * READ_COMMITED default
  */
-enum BTMTransactionIsolation
+public enum BTMTransactionIsolation
 {
 	READ_COMMITTED,
 	READ_UNCOMMITTED,
