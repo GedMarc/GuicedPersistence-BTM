@@ -2,8 +2,8 @@ import com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMConnectionProperties;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMGuicedPersistenceInterceptionBinding;
-import com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader;
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
+import com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader;
 
 module com.jwebmp.guicedpersistence.btm {
 	exports com.jwebmp.guicedpersistence.btm.implementation;

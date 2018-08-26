@@ -2,12 +2,16 @@ package com.jwebmp.guicedpersistence.btm.implementation;
 
 import bitronix.tm.BitronixTransactionManager;
 import bitronix.tm.jndi.BitronixContext;
+import com.google.inject.Key;
+import com.google.inject.persist.PersistService;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 import javax.naming.NamingException;
 import javax.validation.constraints.NotNull;
+import java.lang.annotation.Annotation;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,12 +47,19 @@ public class InternalTransactionHandler
 		{
 			transactionWasStartedOutside = true;
 		}
+		Class<? extends Annotation> entityAnnotation = t.entityManagerAnnotation();
+		PersistService emService = GuiceContext.get(Key.get(PersistService.class, entityAnnotation));
+		if (!transactionWasStartedOutside)
+		{
+			emService.start();
+		}
 		try
 		{
 			returnable = invocation.proceed();
 			if (!transactionWasStartedOutside)
 			{
 				ut.commit();
+				emService.stop();
 			}
 		}
 		catch (IllegalStateException ise)
