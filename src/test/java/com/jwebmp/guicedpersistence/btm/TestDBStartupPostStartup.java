@@ -9,6 +9,10 @@ import javax.sql.DataSource;
 public class TestDBStartupPostStartup
 		implements IAsyncStartup
 {
+	public TestDBStartupPostStartup()
+	{
+	}
+
 	@Inject
 	public TestDBStartupPostStartup(@TestCustomPersistenceLoader PersistService ps, @TestCustomPersistenceLoader DataSource ds)
 	{
