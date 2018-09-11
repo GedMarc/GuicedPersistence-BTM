@@ -25,6 +25,8 @@ module com.jwebmp.guicedpersistence.btm {
 	requires java.validation;
 	requires java.naming;
 
+	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
+
 	provides IGuiceDefaultBinder with BTMGuicedPersistenceInterceptionBinding;
 	provides PropertiesEntityManagerReader with BTMConnectionProperties;
 	provides ITransactionHandler with BTMAutomatedTransactionHandler;

@@ -16,7 +16,7 @@ class GuicedPersistenceBindingTest
 		LogFactory.configureConsoleSingleLineOutput(Level.FINE);
 		GuiceContext.inject();
 
-		AsyncPostStartup.getDbAutoStartupExecutors()
+		AsyncPostStartup.getExecutionService()
 		                .awaitTermination(10, TimeUnit.MINUTES);
 
 	}

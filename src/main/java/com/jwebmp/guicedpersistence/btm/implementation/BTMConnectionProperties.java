@@ -7,6 +7,7 @@ import com.oracle.jaxb21.PersistenceUnit;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class BTMConnectionProperties
 		implements PropertiesEntityManagerReader
@@ -14,6 +15,15 @@ public class BTMConnectionProperties
 	@Override
 	public Map<String, String> processProperties(PersistenceUnit persistenceUnit, Properties properties)
 	{
+		if (persistenceUnit.getTransactionType() == null ||
+		    persistenceUnit.getTransactionType()
+		                   .equals("RESOURCE_LOCAL"))
+		{
+			Logger.getLogger("BTMConnectionProperties")
+			      .warning("Persistence Unit : " +
+			               persistenceUnit.getName() +
+			               " is not a JTA resource and may skip BTM Configuration. Consider including C3P0 for these connections.");
+		}
 		Map<String, String> props = new HashMap<>();
 
 		if (!Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()))
