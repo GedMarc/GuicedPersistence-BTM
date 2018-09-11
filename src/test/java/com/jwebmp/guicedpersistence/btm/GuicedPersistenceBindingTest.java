@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
-class GuicedPersistenceBindingTest
+public class GuicedPersistenceBindingTest
 {
 	@Test
 	public void testMe() throws InterruptedException
