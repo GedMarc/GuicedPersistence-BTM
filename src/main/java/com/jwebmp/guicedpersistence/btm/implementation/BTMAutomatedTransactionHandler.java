@@ -21,6 +21,9 @@ public class BTMAutomatedTransactionHandler
 	 * Field bitronixContext
 	 */
 	private static final BitronixContext bc = new BitronixContext();
+
+	private static final String UserTransactionReference = "java:comp/UserTransaction";
+
 	/**
 	 * Field active
 	 */
@@ -49,7 +52,7 @@ public class BTMAutomatedTransactionHandler
 	{
 		try
 		{
-			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup(UserTransactionReference);
 			userTransaction.begin();
 		}
 		catch (Exception e)
@@ -71,7 +74,7 @@ public class BTMAutomatedTransactionHandler
 	{
 		try
 		{
-			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup(UserTransactionReference);
 			userTransaction.commit();
 		}
 		catch (Exception e)
@@ -93,7 +96,7 @@ public class BTMAutomatedTransactionHandler
 	{
 		try
 		{
-			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup(UserTransactionReference);
 			userTransaction.rollback();
 		}
 		catch (Exception e)
@@ -107,12 +110,12 @@ public class BTMAutomatedTransactionHandler
 	{
 		try
 		{
-			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup("java:comp/UserTransaction");
+			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup(UserTransactionReference);
 			return userTransaction.getStatus() == 0;
 		}
 		catch (Exception e)
 		{
-			BTMAutomatedTransactionHandler.log.log(Level.SEVERE, "BTM Cannot be fetched!");
+			BTMAutomatedTransactionHandler.log.log(Level.SEVERE, "BTM Cannot be fetched!", e);
 			return false;
 		}
 
@@ -121,9 +124,9 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public boolean active(PersistenceUnit persistenceUnit)
 	{
-		return !persistenceUnit.getTransactionType()
-		                       .equals("RESOURCE_LOCAL") &&
-		       !(persistenceUnit.getTransactionType() == null);
+		return persistenceUnit.getTransactionType() != null &&
+		       !"RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
+		                                               .toString());
 	}
 
 	@Override

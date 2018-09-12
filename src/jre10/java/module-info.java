@@ -1,7 +1,5 @@
-import com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMConnectionProperties;
-import com.jwebmp.guicedpersistence.btm.implementation.BTMGuicedPersistenceInterceptionBinding;
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
 import com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader;
 
@@ -27,7 +25,6 @@ module com.jwebmp.guicedpersistence.btm {
 
 	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
-	provides IGuiceDefaultBinder with BTMGuicedPersistenceInterceptionBinding;
 	provides PropertiesEntityManagerReader with BTMConnectionProperties;
 	provides ITransactionHandler with BTMAutomatedTransactionHandler;
 }
