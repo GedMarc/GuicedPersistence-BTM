@@ -16,8 +16,7 @@ public class BTMConnectionProperties
 	public Map<String, String> processProperties(PersistenceUnit persistenceUnit, Properties properties)
 	{
 		if (persistenceUnit.getTransactionType() == null ||
-		    "RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
-		                                           .toString()))
+		    "RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType().toString()) || Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()))
 		{
 			Logger.getLogger("BTMConnectionProperties")
 			      .warning("Persistence Unit : " +

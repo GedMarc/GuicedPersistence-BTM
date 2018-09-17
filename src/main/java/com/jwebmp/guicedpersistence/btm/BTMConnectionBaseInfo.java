@@ -137,6 +137,7 @@ public class BTMConnectionBaseInfo
 		{
 			processNonXa(this, pds);
 		}
+
 		pds.init();
 
 		return pds;
