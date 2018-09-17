@@ -15,12 +15,12 @@ public class BTMConnectionProperties
 	@Override
 	public Map<String, String> processProperties(PersistenceUnit persistenceUnit, Properties properties)
 	{
-		if (persistenceUnit.getTransactionType() == null ||
-		    "RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType().toString()) || Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()))
+		if ((persistenceUnit.getTransactionType() == null || "RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
+		                                                                                            .toString()))
+		    && Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()))
 		{
 			Logger.getLogger("BTMConnectionProperties")
-			      .warning("Persistence Unit : " +
-			               persistenceUnit.getName() +
+			      .warning("Persistence Unit : " + persistenceUnit.getName() +
 			               " is not a JTA resource and may skip BTM Configuration. Consider including C3P0 for these connections.");
 		}
 		Map<String, String> props = new HashMap<>();
