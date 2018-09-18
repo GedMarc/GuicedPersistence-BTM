@@ -2,6 +2,7 @@ package com.jwebmp.guicedpersistence.btm.implementation;
 
 import bitronix.tm.BitronixTransactionManager;
 import bitronix.tm.jndi.BitronixContext;
+import com.google.common.base.Strings;
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
 import com.jwebmp.logger.LogFactory;
 import com.oracle.jaxb21.PersistenceUnit;
@@ -124,9 +125,10 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public boolean active(PersistenceUnit persistenceUnit)
 	{
-		return persistenceUnit.getTransactionType() != null &&
+		return !Strings.isNullOrEmpty(persistenceUnit.getTransactionType()
+		                                             .value()) &&
 		       !"RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
-		                                               .toString());
+		                                               .value());
 	}
 
 	@Override
