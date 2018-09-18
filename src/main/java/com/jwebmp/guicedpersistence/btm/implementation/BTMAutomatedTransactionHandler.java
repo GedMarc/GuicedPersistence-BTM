@@ -125,8 +125,9 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public boolean active(PersistenceUnit persistenceUnit)
 	{
-		return !Strings.isNullOrEmpty(persistenceUnit.getTransactionType()
-		                                             .value()) &&
+		return !Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()) ||
+		       !Strings.isNullOrEmpty(persistenceUnit.getTransactionType()
+		                                             .value()) ||
 		       !"RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
 		                                               .value());
 	}
