@@ -7,7 +7,7 @@ import com.jwebmp.logger.LogFactory;
 import java.util.logging.Logger;
 
 public class BTMDestroyer
-		implements IGuicePreDestroy
+		implements IGuicePreDestroy<BTMDestroyer>
 {
 	private static final Logger log = LogFactory.getLog("BTMDestroyer");
 
