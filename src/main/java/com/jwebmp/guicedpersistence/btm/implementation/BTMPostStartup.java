@@ -15,6 +15,12 @@ public class BTMPostStartup
 	@Override
 	public void postLoad()
 	{
+		if (TransactionManagerServices.isTransactionManagerRunning())
+		{
+			log.fine("Shutting down old BTM instance, container redeploy?");
+			TransactionManagerServices.getTransactionManager()
+			                          .shutdown();
+		}
 		log.fine("Booting BTM JTA Manager");
 		if (!TransactionManagerServices.isTransactionManagerRunning())
 		{

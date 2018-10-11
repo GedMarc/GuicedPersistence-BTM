@@ -14,8 +14,11 @@ public class BTMDestroyer
 	@Override
 	public void onDestroy()
 	{
-		TransactionManagerServices.getTransactionManager()
-		                          .shutdown();
-		log.info("BTM Successfully Shutdown");
+		if (TransactionManagerServices.isTransactionManagerRunning())
+		{
+			TransactionManagerServices.getTransactionManager()
+			                          .shutdown();
+			log.info("BTM Successfully Shutdown");
+		}
 	}
 }
