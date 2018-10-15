@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BTMPostStartup
-		implements IGuicePostStartup
+		implements IGuicePostStartup<BTMPostStartup>
 {
 	private static final Logger log = LogFactory.getLog("BTMPostStartup");
 

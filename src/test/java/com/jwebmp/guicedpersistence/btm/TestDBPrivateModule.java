@@ -9,7 +9,7 @@ import java.lang.annotation.Annotation;
 import java.util.Properties;
 
 public class TestDBPrivateModule
-		extends AbstractDatabaseProviderModule
+		extends AbstractDatabaseProviderModule<TestDBPrivateModule>
 {
 
 	@NotNull
