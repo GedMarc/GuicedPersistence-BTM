@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BTMAutomatedTransactionHandler
-		implements ITransactionHandler
+		implements ITransactionHandler<BTMAutomatedTransactionHandler>
 {
 	/**
 	 * Field log
@@ -28,7 +28,7 @@ public class BTMAutomatedTransactionHandler
 	/**
 	 * Field active
 	 */
-	private static boolean active = false;
+	private static boolean active = true;
 
 	public static boolean isActive()
 	{
@@ -125,16 +125,11 @@ public class BTMAutomatedTransactionHandler
 	@Override
 	public boolean active(PersistenceUnit persistenceUnit)
 	{
-		return !Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()) ||
+		return active && !Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()) ||
 		       !Strings.isNullOrEmpty(persistenceUnit.getTransactionType()
 		                                             .value()) ||
 		       !"RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
 		                                               .value());
 	}
 
-	@Override
-	public boolean enableAutomaticControl()
-	{
-		return active;
-	}
 }
