@@ -4,7 +4,6 @@ import bitronix.tm.resource.jdbc.PoolingDataSource;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
 
 import javax.sql.DataSource;
-import java.io.Serializable;
 
 /**
  * This class is a basic container (mirror) for the database jtm builder string.
@@ -13,12 +12,12 @@ import java.io.Serializable;
  */
 public class BTMConnectionBaseInfo
 		extends ConnectionBaseInfo
-		implements Serializable, Cloneable
+		implements Cloneable
 {
 	/**
 	 * Field serialVersionUID
 	 */
-	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * Constructor BTMConnectionBaseInfo creates a new BTMConnectionBaseInfo instance with XA enabled
