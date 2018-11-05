@@ -12,7 +12,8 @@ module com.jwebmp.guicedpersistence.btm {
 
 	requires com.google.common;
 	requires com.jwebmp.guicedpersistence;
-	requires btm;
+	requires tm.bitronix.btm;
+
 	requires java.sql;
 	requires com.jwebmp.logmaster;
 	requires java.persistence;

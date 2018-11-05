@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Name: com.jwebmp.guicedpersistence.btm
+Automatic-Module-Name: com.jwebmp.guicedpersistence.btm
+Specification-Title: Guiced Persistence BTM Implementation
+Specification-Version: 1.0
+Specification-Vendor: GedMarc
+Implementation-Title: com.jwebmp.guicedpersistence.btm
+Implementation-Version: 1.0
+Implementation-Vendor: GedMarc
