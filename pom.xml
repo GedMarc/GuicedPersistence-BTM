@@ -75,6 +75,20 @@
             <artifactId>javax.transaction-api</artifactId>
             <type>jar</type>
         </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>btm</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
     </dependencies>
 
     <scm>
@@ -95,18 +109,18 @@
         <profile>
             <id>jdk8</id>
             <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.btm</groupId>
-                    <artifactId>btm</artifactId>
-                    <version>${btm.version}</version>
-                    <type>jar</type>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>javax.transaction</groupId>
-                            <artifactId>jta</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
+                <!--  <dependency>
+                      <groupId>org.codehaus.btm</groupId>
+                      <artifactId>btm</artifactId>
+                      <version>${btm.version}</version>
+                      <type>jar</type>
+                      <exclusions>
+                          <exclusion>
+                              <groupId>javax.transaction</groupId>
+                              <artifactId>jta</artifactId>
+                          </exclusion>
+                      </exclusions>
+                  </dependency>-->
             </dependencies>
         </profile>
         <profile>
@@ -168,18 +182,18 @@
                 </plugins>
             </build>
             <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.btm</groupId>
-                    <artifactId>btm</artifactId>
-                    <version>${btm.version}</version>
-                    <type>jar</type>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>javax.transaction</groupId>
-                            <artifactId>jta</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
+                <!--          <dependency>
+                              <groupId>org.codehaus.btm</groupId>
+                              <artifactId>btm</artifactId>
+                              <version>${btm.version}</version>
+                              <type>jar</type>
+                              <exclusions>
+                                  <exclusion>
+                                      <groupId>javax.transaction</groupId>
+                                      <artifactId>jta</artifactId>
+                                  </exclusion>
+                              </exclusions>
+                          </dependency>-->
 
                 <dependency>
                     <groupId>javax.validation</groupId>
@@ -242,9 +256,10 @@
                     </plugin>
                 </plugins>
             </build>
+
             <dependencies>
                 <dependency>
-                    <groupId>com.jwebmp.jre11</groupId>
+                    <groupId>com.jwebmp</groupId>
                     <artifactId>btm</artifactId>
                     <version>${project.version}</version>
                     <type>jar</type>

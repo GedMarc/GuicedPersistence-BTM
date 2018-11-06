@@ -15,11 +15,6 @@ public class BTMConnectionBaseInfo
 		implements Cloneable
 {
 	/**
-	 * Field serialVersionUID
-	 */
-
-
-	/**
 	 * Constructor BTMConnectionBaseInfo creates a new BTMConnectionBaseInfo instance with XA enabled
 	 */
 	public BTMConnectionBaseInfo()
