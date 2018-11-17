@@ -81,6 +81,7 @@
             <artifactId>btm</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
             <exclusions>
                 <exclusion>
                     <groupId>javax.transaction</groupId>
