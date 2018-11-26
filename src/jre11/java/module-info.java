@@ -11,7 +11,7 @@ module com.jwebmp.guicedpersistence.btm {
 	exports com.jwebmp.guicedpersistence.btm;
 
 	requires com.google.common;
-	requires com.jwebmp.guicedpersistence;
+	requires transitive com.jwebmp.guicedpersistence;
 	requires tm.bitronix.btm;
 
 	requires java.sql;
