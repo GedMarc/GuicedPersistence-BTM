@@ -4,7 +4,7 @@ import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions;
 import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions;
 import com.jwebmp.guicedpersistence.btm.implementation.*;
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
-import com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader;
+import com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader;
 
 module com.jwebmp.guicedpersistence.btm {
 	exports com.jwebmp.guicedpersistence.btm.implementation;
@@ -32,7 +32,7 @@ module com.jwebmp.guicedpersistence.btm {
 	provides IGuiceScanModuleExclusions with BTMModuleExclusions;
 	provides IGuiceScanJarExclusions with BTMModuleExclusions;
 
-	provides PropertiesEntityManagerReader with BTMConnectionProperties;
+	provides IPropertiesEntityManagerReader with BTMConnectionProperties;
 	provides ITransactionHandler with BTMAutomatedTransactionHandler;
 	provides IGuicePostStartup with BTMPostStartup;
 	provides IGuicePreDestroy with BTMDestroyer;

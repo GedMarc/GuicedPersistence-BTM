@@ -1,7 +1,7 @@
 package com.jwebmp.guicedpersistence.btm.implementation;
 
 import com.google.common.base.Strings;
-import com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader;
+import com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class BTMConnectionProperties
-		implements PropertiesEntityManagerReader
+		implements IPropertiesEntityManagerReader
 {
 	/**
 	 * If the factory class property must be added to the persistence unit
