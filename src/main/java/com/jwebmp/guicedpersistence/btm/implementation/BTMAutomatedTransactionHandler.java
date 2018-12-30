@@ -119,7 +119,6 @@ public class BTMAutomatedTransactionHandler
 			BTMAutomatedTransactionHandler.log.log(Level.SEVERE, "BTM Cannot be fetched!", e);
 			return false;
 		}
-
 	}
 
 	@Override
@@ -132,10 +131,7 @@ public class BTMAutomatedTransactionHandler
 			   && !"RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
 			                                              .value()))
 				return true;
-			if(!Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()))
-			{
-				return true;
-			}
+			return !Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource());
 		}
 		return false;
 	}
