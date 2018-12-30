@@ -1,9 +1,11 @@
 package com.jwebmp.guicedpersistence.btm.implementation;
 
 import bitronix.tm.TransactionManagerServices;
+import bitronix.tm.resource.ResourceRegistrar;
 import com.jwebmp.guicedinjection.interfaces.IGuicePreDestroy;
 import com.jwebmp.logger.LogFactory;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BTMDestroyer
@@ -14,6 +16,20 @@ public class BTMDestroyer
 	@Override
 	public void onDestroy()
 	{
+
+		ResourceRegistrar.getResourcesUniqueNames()
+		                 .forEach(name ->
+		                          {
+			                          try
+			                          {
+				                          ResourceRegistrar.unregister(ResourceRegistrar.get(name));
+			                          }
+			                          catch (Throwable T)
+			                          {
+				                          log.log(Level.SEVERE, "Unable to unregister resource [" + name + "] during destroy");
+			                          }
+		                          });
+
 		if (TransactionManagerServices.isTransactionManagerRunning())
 		{
 			TransactionManagerServices.getTransactionManager()
