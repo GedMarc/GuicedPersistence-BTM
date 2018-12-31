@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.oracle.jaxb21.PersistenceUnitTransactionType.*;
+
 public class BTMAutomatedTransactionHandler
 		implements ITransactionHandler<BTMAutomatedTransactionHandler>
 {
@@ -126,12 +128,19 @@ public class BTMAutomatedTransactionHandler
 	{
 		if (active)
 		{
-			if(!Strings.isNullOrEmpty(persistenceUnit.getTransactionType()
-			                                         .value())
-			   && !"RESOURCE_LOCAL".equals(persistenceUnit.getTransactionType()
-			                                              .value()))
+			if (persistenceUnit.getTransactionType() == null)
+			{
+				return false;
+			}
+			if (persistenceUnit.getTransactionType()
+			                   .equals(JTA))
+			{
 				return true;
-			return !Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource());
+			}
+			if (!Strings.isNullOrEmpty(persistenceUnit.getJtaDataSource()))
+			{
+				return true;
+			}
 		}
 		return false;
 	}
