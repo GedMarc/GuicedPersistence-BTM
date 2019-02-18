@@ -26,7 +26,6 @@ module com.jwebmp.guicedpersistence.btm {
 
 	provides com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader with com.jwebmp.guicedpersistence.btm.implementation.BTMConnectionProperties;
 	provides com.jwebmp.guicedpersistence.services.ITransactionHandler with com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-	provides com.jwebmp.guicedinjection.interfaces.IGuicePostStartup with com.jwebmp.guicedpersistence.btm.implementation.BTMPostStartup;
 	provides com.jwebmp.guicedinjection.interfaces.IGuicePreDestroy with com.jwebmp.guicedpersistence.btm.implementation.BTMDestroyer;
 
 }
