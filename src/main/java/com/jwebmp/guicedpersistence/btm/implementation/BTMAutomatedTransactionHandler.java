@@ -86,6 +86,20 @@ public class BTMAutomatedTransactionHandler
 		}
 	}
 
+	@Override
+	public void setTransactionTimeout(int timeout, EntityManager entityManager, PersistenceUnit persistenceUnit)
+	{
+		try
+		{
+			BitronixTransactionManager userTransaction = (BitronixTransactionManager) bc.lookup(UserTransactionReference);
+			userTransaction.setTransactionTimeout(timeout);
+		}
+		catch (Exception e)
+		{
+			BTMAutomatedTransactionHandler.log.log(Level.WARNING, "Unable to automatically start the transaction", e);
+		}
+	}
+
 	/**
 	 * What to do when committing a transaction, always called
 	 *
