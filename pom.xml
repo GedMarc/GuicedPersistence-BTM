@@ -22,16 +22,19 @@
         <dependency>
             <groupId>com.jwebmp.guicedee.persistence</groupId>
             <artifactId>guiced-persistence</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.guicedee.persistence</groupId>
             <artifactId>btm</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.guicedee.persistence</groupId>
             <artifactId>guiced-persistence-hibernateproperties-reader</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -63,6 +66,7 @@
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
+            <type>jar</type>
         </dependency>
         
     </dependencies>
