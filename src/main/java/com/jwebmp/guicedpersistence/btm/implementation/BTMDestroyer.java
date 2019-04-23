@@ -16,19 +16,24 @@ public class BTMDestroyer
 	@Override
 	public void onDestroy()
 	{
-
-		ResourceRegistrar.getResourcesUniqueNames()
-		                 .forEach(name ->
-		                          {
-			                          try
+		try
+		{
+			ResourceRegistrar.getResourcesUniqueNames()
+			                 .forEach(name ->
 			                          {
-				                          ResourceRegistrar.unregister(ResourceRegistrar.get(name));
-			                          }
-			                          catch (Throwable T)
-			                          {
-				                          log.log(Level.SEVERE, "Unable to unregister resource [" + name + "] during destroy");
-			                          }
-		                          });
+				                          try
+				                          {
+					                          ResourceRegistrar.unregister(ResourceRegistrar.get(name));
+				                          }
+				                          catch (Throwable T)
+				                          {
+					                          log.log(Level.SEVERE, "Unable to unregister resource [" + name + "] during destroy");
+				                          }
+			                          });
+		}catch(Throwable T)
+		{
+			log.log(Level.SEVERE, "Unable to unregister resource", T);
+		}
 
 		if (TransactionManagerServices.isTransactionManagerRunning())
 		{
@@ -38,3 +43,4 @@ public class BTMDestroyer
 		}
 	}
 }
+
