@@ -135,9 +135,9 @@
                                     <version>${maven.hibernate.version}</version>
                                 </annotationProcessorPath>
                                 <annotationProcessorPath>
-                                    <groupId>javax.xml.bind</groupId>
-                                    <artifactId>jaxb-api</artifactId>
-                                    <version>${jaxb.version}</version>
+                                    <groupId>jakarta.xml.bind</groupId>
+                                    <artifactId>jakarta.xml.bind-api</artifactId>
+                                    <version>${glassfish.jaxb.version}</version>
                                 </annotationProcessorPath>
                             </annotationProcessorPaths>
                             <annotationProcessors>
@@ -160,9 +160,9 @@
                                 <!--<optional>true</optional>-->
                             </dependency>
                             <dependency>
-                                <groupId>javax.xml.bind</groupId>
-                                <artifactId>jaxb-api</artifactId>
-                                <version>${jaxb.version}</version>
+                                <groupId>jakarta.xml.bind</groupId>
+                                <artifactId>jakarta.xml.bind-api</artifactId>
+                                <version>${glassfish.jaxb.version}</version>
                                 <type>jar</type>
                             </dependency>
                         </dependencies>
