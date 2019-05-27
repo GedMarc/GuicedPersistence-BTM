@@ -180,6 +180,8 @@ public class BTMConnectionBaseInfo
 			pds.getDriverProperties()
 			   .setProperty(cbi.getServerInstanceNameProperty(), cbi.getInstanceName());
 		}
+		getCustomProperties().forEach((a,b) -> pds.getDriverProperties()
+	                                          .setProperty(a, b));
 		return pds;
 	}
 
@@ -221,7 +223,8 @@ public class BTMConnectionBaseInfo
 			pds.getDriverProperties()
 			   .setProperty("password", cbi.getPassword());
 		}
-
+		getCustomProperties().forEach((a,b) -> pds.getDriverProperties()
+		                                          .setProperty(a, b));
 		return pds;
 	}
 
