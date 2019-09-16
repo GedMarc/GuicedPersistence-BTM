@@ -19,8 +19,6 @@ module com.jwebmp.guicedpersistence.btm {
 	requires java.validation;
 	requires java.naming;
 
-	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
-
 	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.jwebmp.guicedpersistence.btm.implementation.BTMModuleExclusions;
 	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions with com.jwebmp.guicedpersistence.btm.implementation.BTMModuleExclusions;
 

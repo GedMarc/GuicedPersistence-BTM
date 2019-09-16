@@ -1,5 +1,6 @@
-package com.jwebmp.guicedpersistence.btm;
+package com.jwebmp.guicedpersistence.btm.tests;
 
+import com.jwebmp.guicedpersistence.btm.BTMConnectionBaseInfo;
 import com.jwebmp.guicedpersistence.db.DatabaseModule;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
 import com.oracle.jaxb21.PersistenceUnit;

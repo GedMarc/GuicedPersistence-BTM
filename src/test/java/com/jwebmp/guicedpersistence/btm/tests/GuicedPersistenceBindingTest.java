@@ -1,4 +1,4 @@
-package com.jwebmp.guicedpersistence.btm;
+package com.jwebmp.guicedpersistence.btm.tests;
 
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;

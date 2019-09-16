@@ -38,12 +38,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
-            <artifactId>guiced-persistence-hibernateproperties-reader</artifactId>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
         </dependency>
@@ -93,6 +87,10 @@
             <type>jar</type>
         </dependency>
 
+        <dependency>
+            <groupId>com.jwebmp.thirdparty</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
 
     </dependencies>
 
@@ -110,199 +108,4 @@
         <url>http://jwebmp.com/teamcity</url>
     </ciManagement>
 
-    <profiles>
-        <profile>
-            <id>jdk8</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.moditect</groupId>
-                        <artifactId>moditect-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>add-module-infos</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>add-module-info</goal>
-                                </goals>
-                                <configuration>
-                                    <overwriteExistingFiles>true</overwriteExistingFiles>
-                                    <module>
-                                        <moduleInfoFile>
-                                            src/jre11/java/module-info.java
-                                        </moduleInfoFile>
-                                    </module>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-<!--
-        <profile>
-            <id>jdk11</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>${maven.compiler.version}</version>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
-                            <annotationProcessorPaths>
-                                <annotationProcessorPath>
-                                    <groupId>org.hibernate</groupId>
-                                    <artifactId>hibernate-jpamodelgen</artifactId>
-                                    <version>${maven.hibernate.version}</version>
-                                </annotationProcessorPath>
-                                <annotationProcessorPath>
-                                    <groupId>jakarta.xml.bind</groupId>
-                                    <artifactId>jakarta.xml.bind-api</artifactId>
-                                    <version>${glassfish.jaxb.version}</version>
-                                </annotationProcessorPath>
-                            </annotationProcessorPaths>
-                            <annotationProcessors>
-                                <annotationProcessor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</annotationProcessor>
-                            </annotationProcessors>
-                            <compilerArgs>
-                                <arg>-AaddGeneratedAnnotation=false</arg>
-                            </compilerArgs>
-                            <compilerArguments>
-                                <AaddGeneratedAnnotation>false</AaddGeneratedAnnotation>
-                                <Adebug>true</Adebug>
-                            </compilerArguments>
-                            <failOnError>true</failOnError>
-                        </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.hibernate</groupId>
-                                <artifactId>hibernate-jpamodelgen</artifactId>
-                                <version>${maven.hibernate.version}</version>
-                                <exclusions>
-                                    <exclusion>
-                                        <artifactId>javax.activation-api</artifactId>
-                                        <groupId>javax.activation</groupId>
-                                    </exclusion>
-                                    <exclusion>
-                                        <artifactId>jakarta.activation-api</artifactId>
-                                        <groupId>jakarta.activation</groupId>
-                                    </exclusion>
-                                </exclusions>
-                            </dependency>
-                            <dependency>
-                                <groupId>jakarta.xml.bind</groupId>
-                                <artifactId>jakarta.xml.bind-api</artifactId>
-                                <version>${glassfish.jaxb.version}</version>
-                                <type>jar</type>
-                                <exclusions>
-                                    <exclusion>
-                                        <artifactId>javax.activation-api</artifactId>
-                                        <groupId>javax.activation</groupId>
-                                    </exclusion>
-                                    <exclusion>
-                                        <artifactId>jakarta.activation-api</artifactId>
-                                        <groupId>jakarta.activation</groupId>
-                                    </exclusion>
-                                </exclusions>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <dependencies>
-                <dependency>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-
-
-        <profile>
-            <id>jdk12</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>${maven.compiler.version}</version>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
-                            <annotationProcessorPaths>
-                                <annotationProcessorPath>
-                                    <groupId>org.hibernate</groupId>
-                                    <artifactId>hibernate-jpamodelgen</artifactId>
-                                    <version>${maven.hibernate.version}</version>
-                                </annotationProcessorPath>
-                                <annotationProcessorPath>
-                                    <groupId>jakarta.xml.bind</groupId>
-                                    <artifactId>jakarta.xml.bind-api</artifactId>
-                                    <version>${glassfish.jaxb.version}</version>
-                                </annotationProcessorPath>
-                            </annotationProcessorPaths>
-                            <annotationProcessors>
-                                <annotationProcessor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</annotationProcessor>
-                            </annotationProcessors>
-                            <compilerArgs>
-                                <arg>-AaddGeneratedAnnotation=false</arg>
-                            </compilerArgs>
-                            <compilerArguments>
-                                <AaddGeneratedAnnotation>false</AaddGeneratedAnnotation>
-                                <Adebug>true</Adebug>
-                            </compilerArguments>
-                            <failOnError>true</failOnError>
-                        </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.hibernate</groupId>
-                                <artifactId>hibernate-jpamodelgen</artifactId>
-                                <version>${maven.hibernate.version}</version>
-                                <exclusions>
-                                    <exclusion>
-                                        <artifactId>javax.activation-api</artifactId>
-                                        <groupId>javax.activation</groupId>
-                                    </exclusion>
-                                    <exclusion>
-                                        <artifactId>jakarta.activation-api</artifactId>
-                                        <groupId>jakarta.activation</groupId>
-                                    </exclusion>
-                                </exclusions>
-                            </dependency>
-                            <dependency>
-                                <groupId>jakarta.xml.bind</groupId>
-                                <artifactId>jakarta.xml.bind-api</artifactId>
-                                <version>${glassfish.jaxb.version}</version>
-                                <type>jar</type>
-                                <exclusions>
-                                    <exclusion>
-                                        <artifactId>javax.activation-api</artifactId>
-                                        <groupId>javax.activation</groupId>
-                                    </exclusion>
-                                    <exclusion>
-                                        <artifactId>jakarta.activation-api</artifactId>
-                                        <groupId>jakarta.activation</groupId>
-                                    </exclusion>
-                                </exclusions>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <dependencies>
-                <dependency>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>-->
-    </profiles>
 </project>
