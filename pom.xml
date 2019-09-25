@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jwebmp.guicedee.persistence</groupId>
+        <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
         <artifactId>persistence-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
@@ -20,77 +20,92 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>guiced-persistence</artifactId>
             <type>jar</type>
-            </dependency>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee</groupId>
+            <groupId>com.jwebmp.jpms.guicedee</groupId>
             <artifactId>guiced-injection</artifactId>
             <type>jar</type>
-            </dependency>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>btm</artifactId>
             <type>jar</type>
-            </dependency>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId><type>jar</type>
-            </dependency>
+            <artifactId>junit-jupiter-api</artifactId>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId><type>jar</type>
-            </dependency>
+            <artifactId>hamcrest-all</artifactId>
+            <type>jar</type>
+        </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId><type>jar</type>
-            </dependency>
+            <artifactId>assertj-core</artifactId>
+            <type>jar</type>
+        </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId><type>jar</type>
-            </dependency>
+            <artifactId>mockito-core</artifactId>
+            <type>jar</type>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope><type>jar</type>
-            </dependency>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
 
         <dependency>
             <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>javax.transaction</artifactId>
             <type>jar</type>
-            </dependency>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>aopalliance-core</artifactId>
             <type>jar</type>
-            </dependency>
-
-        <dependency>
-            <groupId>com.jwebmp.inject</groupId>
-            <artifactId>guice</artifactId>
-            <type>jar</type>
-            </dependency>
-
-        <dependency>
-            <groupId>com.jwebmp.inject.extensions</groupId>
-            <artifactId>guice-persist</artifactId>
-            <type>jar</type>
-            </dependency>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.jwebmp.jpms.thirdparty</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId><type>jar</type>
-            </dependency>
+            <artifactId>guice</artifactId>
+            <type>jar</type>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+            <artifactId>guice-persist</artifactId>
+            <type>jar</type>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <type>jar</type>
+            <version>${project.version}</version>
+        </dependency>
 
     </dependencies>
 
