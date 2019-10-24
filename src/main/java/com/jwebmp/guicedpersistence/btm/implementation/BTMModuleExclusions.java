@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.btm.implementation;
+package com.guicedee.guicedpersistence.btm.implementation;
 
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions;
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanJarExclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class BTMModuleExclusions
 	public @NotNull Set<String> excludeModules()
 	{
 		Set<String> strings = new HashSet<>();
-		strings.add("com.jwebmp.guicedpersistence.btm");
+		strings.add("com.guicedee.jpms.guicedpersistence.btm");
 
 		strings.add("btm");
 		strings.add("java.sql");

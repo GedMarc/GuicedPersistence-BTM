@@ -1,29 +1,41 @@
-module com.jwebmp.guicedpersistence.btm {
-	exports com.jwebmp.guicedpersistence.btm.implementation;
-	exports com.jwebmp.guicedpersistence.btm;
+import com.guicedee.guicedinjection.interfaces.IGuicePreDestroy;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanJarExclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions;
+import com.guicedee.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
+import com.guicedee.guicedpersistence.btm.implementation.BTMConnectionProperties;
+import com.guicedee.guicedpersistence.btm.implementation.BTMDestroyer;
+import com.guicedee.guicedpersistence.btm.implementation.BTMModuleExclusions;
+import com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader;
+import com.guicedee.guicedpersistence.services.ITransactionHandler;
+
+module com.guicedee.guicedpersistence.btm {
+	exports com.guicedee.guicedpersistence.btm.implementation;
+	exports com.guicedee.guicedpersistence.btm;
 
 	requires com.google.common;
-	requires transitive com.jwebmp.guicedpersistence;
+	requires transitive com.guicedee.guicedpersistence;
 	requires tm.bitronix.btm;
 
 	requires java.sql;
-	requires com.jwebmp.logmaster;
+	requires com.guicedee.logmaster;
 	requires java.persistence;
 
 	requires java.transaction;
 
-	requires com.jwebmp.guicedinjection;
+	requires com.guicedee.guicedinjection;
 	requires com.google.guice.extensions.persist;
 	requires com.google.guice;
 	requires aopalliance;
 	requires java.validation;
 	requires java.naming;
 
-	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.jwebmp.guicedpersistence.btm.implementation.BTMModuleExclusions;
-	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions with com.jwebmp.guicedpersistence.btm.implementation.BTMModuleExclusions;
+	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-	provides com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader with com.jwebmp.guicedpersistence.btm.implementation.BTMConnectionProperties;
-	provides com.jwebmp.guicedpersistence.services.ITransactionHandler with com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-	provides com.jwebmp.guicedinjection.interfaces.IGuicePreDestroy with com.jwebmp.guicedpersistence.btm.implementation.BTMDestroyer;
+	provides IGuiceScanModuleExclusions with BTMModuleExclusions;
+	provides IGuiceScanJarExclusions with BTMModuleExclusions;
+
+	provides IPropertiesEntityManagerReader with BTMConnectionProperties;
+	provides ITransactionHandler with BTMAutomatedTransactionHandler;
+	provides IGuicePreDestroy with BTMDestroyer;
 
 }

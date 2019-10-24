@@ -1,4 +1,4 @@
-package com.jwebmp.guicedpersistence.btm;
+package com.guicedee.guicedpersistence.btm;
 
 /**
  * Sets the transaction isolation for the pooled connections

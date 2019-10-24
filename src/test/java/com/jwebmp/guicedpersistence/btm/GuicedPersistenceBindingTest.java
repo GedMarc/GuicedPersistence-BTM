@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.btm.tests;
+package com.guicedee.guicedpersistence.btm;
 
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.guicedinjection.GuiceContext;
+import com.guicedee.logger.LogFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.logging.Level;

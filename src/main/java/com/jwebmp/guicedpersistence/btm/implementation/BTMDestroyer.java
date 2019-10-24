@@ -1,9 +1,9 @@
-package com.jwebmp.guicedpersistence.btm.implementation;
+package com.guicedee.guicedpersistence.btm.implementation;
 
 import bitronix.tm.TransactionManagerServices;
 import bitronix.tm.resource.ResourceRegistrar;
-import com.jwebmp.guicedinjection.interfaces.IGuicePreDestroy;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.guicedinjection.interfaces.IGuicePreDestroy;
+import com.guicedee.logger.LogFactory;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

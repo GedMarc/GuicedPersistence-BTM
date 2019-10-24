@@ -1,10 +1,10 @@
-package com.jwebmp.guicedpersistence.btm.implementation;
+package com.guicedee.guicedpersistence.btm.implementation;
 
 import bitronix.tm.BitronixTransactionManager;
 import bitronix.tm.jndi.BitronixContext;
 import com.google.common.base.Strings;
-import com.jwebmp.guicedpersistence.services.ITransactionHandler;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.guicedpersistence.services.ITransactionHandler;
+import com.guicedee.logger.LogFactory;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import javax.persistence.EntityManager;

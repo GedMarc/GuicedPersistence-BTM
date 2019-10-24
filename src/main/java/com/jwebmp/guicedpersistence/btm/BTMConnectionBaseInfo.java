@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.btm;
+package com.guicedee.guicedpersistence.btm;
 
 import bitronix.tm.resource.jdbc.PoolingDataSource;
-import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
+import com.guicedee.guicedpersistence.db.ConnectionBaseInfo;
 
 import javax.sql.DataSource;
 

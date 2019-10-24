@@ -1,4 +1,4 @@
-package com.jwebmp.guicedpersistence.btm.tests;
+package com.guicedee.guicedpersistence.btm;
 
 import com.google.inject.BindingAnnotation;
 

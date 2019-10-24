@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.btm.implementation;
+package com.guicedee.guicedpersistence.btm.implementation;
 
 import com.google.common.base.Strings;
-import com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader;
+import com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.HashMap;
