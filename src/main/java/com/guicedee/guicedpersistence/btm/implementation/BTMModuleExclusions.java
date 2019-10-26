@@ -23,7 +23,7 @@ public class BTMModuleExclusions
 	public @NotNull Set<String> excludeModules()
 	{
 		Set<String> strings = new HashSet<>();
-		strings.add("com.guicedee.jpms.guicedpersistence.btm");
+		strings.add("com.guicedee.guicedpersistence.btm");
 
 		strings.add("btm");
 		strings.add("java.sql");
