@@ -1,13 +1,3 @@
-import com.guicedee.guicedinjection.interfaces.IGuicePreDestroy;
-import com.guicedee.guicedinjection.interfaces.IGuiceScanJarExclusions;
-import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions;
-import com.guicedee.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-import com.guicedee.guicedpersistence.btm.implementation.BTMConnectionProperties;
-import com.guicedee.guicedpersistence.btm.implementation.BTMDestroyer;
-import com.guicedee.guicedpersistence.btm.implementation.BTMModuleExclusions;
-import com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader;
-import com.guicedee.guicedpersistence.services.ITransactionHandler;
-
 module com.guicedee.guicedpersistence.btm {
 	exports com.guicedee.guicedpersistence.btm.implementation;
 	exports com.guicedee.guicedpersistence.btm;
@@ -31,11 +21,11 @@ module com.guicedee.guicedpersistence.btm {
 
 	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-	provides IGuiceScanModuleExclusions with BTMModuleExclusions;
-	provides IGuiceScanJarExclusions with BTMModuleExclusions;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.guicedee.guicedpersistence.btm.implementation.BTMModuleExclusions;
+	provides com.guicedee.guicedinjection.interfaces.IGuiceScanJarExclusions with com.guicedee.guicedpersistence.btm.implementation.BTMModuleExclusions;
 
-	provides IPropertiesEntityManagerReader with BTMConnectionProperties;
-	provides ITransactionHandler with BTMAutomatedTransactionHandler;
-	provides IGuicePreDestroy with BTMDestroyer;
+	provides com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader with com.guicedee.guicedpersistence.btm.implementation.BTMConnectionProperties;
+	provides com.guicedee.guicedpersistence.services.ITransactionHandler with com.guicedee.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
+	provides com.guicedee.guicedinjection.interfaces.IGuicePreDestroy with com.guicedee.guicedpersistence.btm.implementation.BTMDestroyer;
 
 }
