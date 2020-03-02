@@ -21,9 +21,6 @@ module com.guicedee.guicedpersistence.btm {
 
 	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.guicedee.guicedpersistence.btm.implementation.BTMModuleExclusions;
-	provides com.guicedee.guicedinjection.interfaces.IGuiceScanJarExclusions with com.guicedee.guicedpersistence.btm.implementation.BTMModuleExclusions;
-
 	provides com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader with com.guicedee.guicedpersistence.btm.implementation.BTMConnectionProperties;
 	provides com.guicedee.guicedpersistence.services.ITransactionHandler with com.guicedee.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 	provides com.guicedee.guicedinjection.interfaces.IGuicePreDestroy with com.guicedee.guicedpersistence.btm.implementation.BTMDestroyer;
