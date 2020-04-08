@@ -2,20 +2,11 @@ module com.guicedee.guicedpersistence.btm {
 	exports com.guicedee.guicedpersistence.btm.implementation;
 	exports com.guicedee.guicedpersistence.btm;
 
-	requires com.google.common;
 	requires transitive com.guicedee.guicedpersistence;
 	requires tm.bitronix.btm;
 
-	requires java.sql;
-	requires com.guicedee.logmaster;
-	requires java.persistence;
+	requires transitive java.sql;
 
-	requires java.transaction;
-
-	requires com.guicedee.guicedinjection;
-	requires com.google.guice.extensions.persist;
-	requires com.google.guice;
-	requires aopalliance;
 	requires java.validation;
 	requires java.naming;
 
