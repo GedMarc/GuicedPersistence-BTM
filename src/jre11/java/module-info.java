@@ -6,7 +6,7 @@ module com.guicedee.guicedpersistence.btm {
 	requires transitive tm.bitronix.btm;
 
 	requires transitive java.sql;
-	requires java.naming;
+	requires static java.naming;
 
 	requires transitive com.guicedee.guicedpersistence.readers.hibernateproperties;
 
